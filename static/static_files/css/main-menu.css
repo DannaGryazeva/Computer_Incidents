@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+        .main-menu{
+        list-style: none;
+        margin: 40px 0 5px;
+        padding: 25px 0 5px;
+        text-align: center;
+        background: white;
+        }
+        .main-menu  li{display: inline-block;}
+        .main-menu li:after {
+        content: "|";
+        color: #606060;
+        display: inline-block;
+        vertical-align:top;
+        }
+       .main-menu li:last-child:after {content: none;}
+       .main-menu a {
+       text-decoration: none;
+       font-family: 'Ubuntu Condensed', sans-serif;
+       letter-spacing: 2px;
+       position: relative;
+       padding-bottom: 20px;
+       margin: 0 34px 0 30px;
+       font-size: 17px;
+       text-transform: uppercase;
+       display: inline-block;
+       transition: color .2s;
+       }
+       .main-menu a, .menu-main a:visited {color: #9d999d;}
+       .main-menu a.current, .menu-main a:hover{color: #5a567f;}
+       .main-menu a:before,
+       .main-menu a:after {
+       content: "";
+       position: absolute;
+       height: 4px;
+       top: auto;
+       right: 50%;
+       bottom: -5px;
+       left: 50%;
+       background: #5a567f;
+       transition: .8s;
+      }
+      .main-menu a:hover:before, .menu-main .current:before {left: 0;}
+      .main-menu a:hover:after, .menu-main .current:after {right: 0;}
+      @media (max-width: 550px) {
+      .main-menu {padding-top: 0;}
+      .main-menu li {display: block;}
+      .main-menu li:after {content: none;}
+      .main-menu a {
+      padding: 25px 0 20px;
+      margin: 0 30px;
+      }
+      }
