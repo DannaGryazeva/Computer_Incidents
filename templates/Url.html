@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Url</title>
+    <link rel="stylesheet" href="../static/static_files/css/main-menu.css">
+	<style>
+		h3{
+		color:#5a567f
+		}
+	</style>
+</head>
+<body>
+<nav class = "main-menu">
+    <ul>
+        <li><a href="/">Main Page</a></li>
+        <li><a href = "CheckUrl"> Url </a></li>
+        <li><a href = "CheckDomain"> Domain </a></li>
+        <li><a href = "CheckIP"> IP </a></li>
+    </ul>
+</nav>
+<br/><br/><br/>
+<center><h3>Check your link</h3>
+		<br/>
+		<form action="/CheckUrl" method="post">
+			<p>
+				<input size=70 type="link" name="InputLink" id="InputLink" placeholder="InputLink" required></input>
+			</p>
+		</form></center>
+		<center>
+		{%if answer%}
+		<output>{{answer}}</output>
+		{%endif%}
+		</center>
+</body>
+</html>

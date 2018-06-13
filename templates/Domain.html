@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Domain</title>
+    <link rel="stylesheet" href="../static/static_files/css/main-menu.css">
+    <link rel="stylesheet" href="../static/static_files/css/table.css">
+	<style>
+		h3{
+		color:#5a567f
+		}
+	</style>
+</head>
+<body>
+<nav class = "main-menu">
+    <ul>
+        <li><a href="/">Main Page</a></li>
+        <li><a href = "CheckUrl"> Url </a></li>
+        <li><a href = "CheckDomain"> Domain </a></li>
+        <li><a href = "CheckIP"> IP </a></li>
+    </ul>
+</nav>
+<br/><br/><br/>
+<center><h3>Check domain</h3></center>
+                <br/>
+		<form action="/CheckDomain" method="post">
+			<p style="text-align: center">
+				<input size=70 type="link" name="InputDomain" id="InputDomain" placeholder="InputDomain" required></input>
+			</p>
+		</form>
+		<center>
+			{%if answer%}
+				<output>{{answer}}</output>
+			{%endif%}
+		</center>
+		<table class ="table">
+			<tr>
+				<th>Malicious link</th>
+				<th>Submission time</th>
+			</tr>
+			{% for row in rows %}
+				<tr>
+					<td>{{row["url"]}}</td>
+					<td>{{row["submission"] }}</td>
+				</tr>
+			{% endfor %}
+        </table>
+</body>
+</html>

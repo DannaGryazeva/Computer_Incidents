@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IP</title>
+    <link rel="stylesheet" href="../static/static_files/css/main-menu.css">
+	<style>
+		h3{
+		color:#5a567f
+		}
+		a{
+        text-decoration: none;
+        color: #606060;
+        }
+	</style>
+</head>
+<body>
+<nav class = "main-menu">
+    <ul>
+        <li><a href="/">Main Page</a></li>
+        <li><a href = "CheckUrl"> Url </a></li>
+        <li><a href = "CheckDomain"> Domain </a></li>
+        <li><a href = "CheckIP"> IP </a></li>
+    </ul>
+</nav>
+<center><img src="{{url_for('static', filename='pic_1.png')}}"></center>
+<center><h3>Check your IP</h3>
+		<br/>
+		<form action="/CheckIP" method="post">
+			<p>
+				<input size=70 type="IP" name="InputIP" id="InputIP" placeholder="InputIP" required></input>
+			</p>
+		</form></center>
+<center>
+		{%if answer%}
+		<output>{{answer}}</output>
+		{%endif%}
+</center>
+<a href="#top"> top</a>
+</body>
+</html>
