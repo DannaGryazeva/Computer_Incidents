@@ -30,11 +30,13 @@
 		<tr>
 			<th>Malicious Url</th>
 			<th>Submission time</th>
+            <th>Resource</th>
 		</tr>
 		{% for row in rows %}
 		<tr>
 			<td>{{row["url"]}}</td>
 			<td>{{row["submission"] }}</td>
+            <td>{{row["resource"]}}</td>
 		</tr>
 		{% endfor %}
 	</table>
