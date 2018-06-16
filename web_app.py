@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main_page():
-    rows = session.query(Url.url, Url.submission).order_by(Url.id)[0:25]
+    rows = session.query(Url.url, Url.submission, Url.resource).order_by(Url.id)[0:25]
     return render_template('MainPage.html', rows=rows)
 
 
@@ -22,7 +22,7 @@ def main_page():
 def check_domain():
     if request.method == 'POST':
         dom = request.form['InputDomain']
-        rows = session.query(Url.url,Url.submission).filter(Domain.domain == dom).filter(Url.domain_id == Domain.id).all()
+        rows = session.query(Url.url, Url.submission, Url.resource).filter(Domain.domain == dom).filter(Url.domain_id == Domain.id).all()
         if rows:
             answer = "This domain exists in database"
             return render_template('Domain.html', answer=answer, rows=rows)
