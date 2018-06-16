@@ -39,7 +39,9 @@ def plot_map(session):
     m.drawparallels(np.arange(-90.,120.,30.))
     m.drawmeridians(np.arange(0.,420.,60.))
     m.drawmapboundary(fill_color='#d0fefe')
-    m.scatter(x, y, 20, marker='o', color='r')
+    m.scatter(x, y, 20, marker='o', color='r', label="Malicious IP")
+    plt.title("Malware")
+    plt.legend()
     save(name='pic_1', fmt='png')
     plt.show()
 
