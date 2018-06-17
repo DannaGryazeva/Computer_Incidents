@@ -74,7 +74,7 @@ def search():
         return render_template('Search.html')
 
 if __name__ == "__main__":
-    engine = create_engine('sqlite:///DBMaliciousURL.db', echo=True)
+    engine = create_engine('postgresql://postgres:Keyfahtz15@localhost:5432/DBMalicious', echo=True)
     Base.metadata.bind = engine
     Session = sessionmaker(bind=engine)
     session = Session()

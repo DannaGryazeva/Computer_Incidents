@@ -4,7 +4,10 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
+
+engine = create_engine('postgresql://postgres:Keyfahtz15@localhost:5432/DBMalicious')
 Base = declarative_base()
+
 
 
 class Domain(Base):
@@ -36,5 +39,4 @@ class IP(Base):
         resource = Column(String(), nullable=False)
 
 
-engine = create_engine('sqlite:///DBMaliciousURL.db')
 Base.metadata.create_all(engine)

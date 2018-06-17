@@ -42,7 +42,7 @@ def domain_parser(req_link, session):
 
 
 if __name__ == "__main__":
-    engine = create_engine('sqlite:///DBMaliciousURL.db', echo=False)
+    engine = create_engine('postgresql://postgres:Keyfahtz15@localhost:5432/DBMalicious', echo=False)
     Base.metadata.bind = engine
     Session = sessionmaker(bind=engine)
     session = Session()
