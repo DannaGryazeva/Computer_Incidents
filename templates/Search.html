@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="../static/static_files/css/main-menu.css">
+    <link rel="stylesheet" href="../static/static_files/css/table.css">
+    <style>
+        a{
+        text-decoration: none;
+        color: #606060;
+        }
+        .col1 { width: 850px; }
+        .coln { width: 150px; }
+        .col2 { width: 100px; }
+    </style>
+</head>
+<body>
+<nav class = "main-menu">
+    <ul>
+        <li><a href="/">Main Page</a></li>
+        <li><a href = "CheckUrl"> Url </a></li>
+        <li><a href = "CheckDomain"> Domain </a></li>
+        <li><a href = "CheckIP"> IP </a></li>
+        <li><a href = "Search"> Search </a></li>
+    </ul>
+</nav>
+<form action="/Search" method="post">
+<p>
+    <input size=70 type="search" name="SearchParameter" id="SearchParameter" placeholder="SearchParameter" required></input>
+</p>
+</form>
+    <table class="table">
+        <col class="col1">
+        <col  class="coln">
+        <col class="col2">
+		<tr>
+			<th>Malicious Url</th>
+			<th>Submission time</th>
+            <th>Resource</th>
+		</tr>
+		{% for row in rows %}
+		<tr>
+			<td>{{row["url"]}}</td>
+			<td>{{row["submission"] }}</td>
+            <td>{{row["resource"]}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+<a href="#top"> top</a>
+</body>
+</html>
