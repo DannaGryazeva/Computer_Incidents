@@ -24,10 +24,10 @@ def check_domain():
         dom = request.form['InputDomain']
         rows = session.query(Url.url, Url.submission, Url.resource).filter(Domain.domain == dom).filter(Url.domain_id == Domain.id).all()
         if rows:
-            answer = "This domain exists in database"
+            answer = "Domain "+dom+" exists in database"
             return render_template('Domain.html', answer=answer, rows=rows)
         else:
-            answer = "This domain doesn't exist in database"
+            answer = "Domain "+dom+" doesn't exist in database"
             return render_template('Domain.html', answer=answer)
     else:
         return render_template('Domain.html')
@@ -39,12 +39,12 @@ def check_url():
         link = request.form['InputLink']
         row = session.query(Url.url, Url.submission).filter(Url.url == link).first()
         if not row:
-            answer = json.dumps('The link was not found in base')
+            answer = json.dumps('The link '+link+' was not found in base')
         else:
             t = row.submission.split('T')
             s = t[1].split('+')
             p = time.strftime("%d.%m.%Y", time.strptime(t[0], "%Y-%m-%d"))
-            answer = json.dumps('The link exists in base. Submission time: '+s[0]+' '+p)
+            answer = json.dumps('The link '+link+' exists in base. Submission time: '+s[0]+' '+p)
         return render_template('Url.html', answer=answer)
     else:
         return render_template('Url.html')
@@ -56,13 +56,22 @@ def check_ip():
         ip = request.form['InputIP']
         row = session.query(IP.ip).filter(IP.ip == ip).first()
         if not row:
-            answer = json.dumps('IP was not found in base')
+            answer = json.dumps('IP '+ip+' was not found in base')
         else:
-            answer = json.dumps('IP exists in base.')
+            answer = json.dumps('IP '+ip+' exists in base.')
         return render_template('IP.html', answer=answer)
     else:
         return render_template('IP.html')
 
+
+@app.route('/Search', methods=['POST', 'GET'])
+def search():
+    if request.method == 'POST':
+        par = request.form['SearchParameter']
+        rows = session.query(Url.url, Url.submission, Url.resource).filter(Url.url.like('%'+par+'%'))
+        return render_template('Search.html', rows=rows)
+    else:
+        return render_template('Search.html')
 
 if __name__ == "__main__":
     engine = create_engine('sqlite:///DBMaliciousURL.db', echo=True)
